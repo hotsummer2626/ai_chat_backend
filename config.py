@@ -1,8 +1,8 @@
 import os
 
 HOSTNAME = os.getenv("DB_HOSTNAME")
-PORT = '3306'
-DATABASE = 'ai_chat'
+PORT = os.getenv("DB_PORT")
+DATABASE = os.getenv("DB_NAME")
 USERNAME = os.getenv("DB_USERNAME")
 PASSWORD = os.getenv("DB_PASSWORD")
 DB_URI = 'mysql+pymysql://{}:{}@{}:{}/{}?charset=utf8'.format(
