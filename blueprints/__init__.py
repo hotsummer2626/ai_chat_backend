@@ -6,3 +6,8 @@ api = Blueprint('api', __name__, url_prefix='/api')
 
 api.register_blueprint(user_bp)
 api.register_blueprint(openai_bp)
+
+
+@api.route('/')
+def test():
+    return 'hello world'
