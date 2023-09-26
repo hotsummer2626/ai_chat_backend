@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    image: app
+    ports:
+      - 5000:5000
+    container_name: app
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+
+  db:
+    image: mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123123
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
