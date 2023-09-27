@@ -12,17 +12,17 @@ openai_bp = Blueprint('openai', __name__, url_prefix='/')
 def register():
     try:
         message = request.json['message']
-        # completion = openai.ChatCompletion.create(
-        #     model="gpt-3.5-turbo",
-        #     messages=[
-        #         {"role": "system", "content": "You are a helpful assistant."},
-        #         message
-        #     ]
-        # )
-        # return jsonify({'message': completion.choices[0].message})
-        return jsonify({'message': {
-            'role': 'assistant',
-            'content': message['content']
-        }})
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                message
+            ]
+        )
+        return jsonify({'message': completion.choices[0].message})
+        # return jsonify({'message': {
+        #     'role': 'assistant',
+        #     'content': message['content']
+        # }})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
